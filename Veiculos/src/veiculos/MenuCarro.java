@@ -10,8 +10,8 @@ public class MenuCarro {
         metodos.cadastro();
         while (valor!= 0) {
             System.out.println("Selecione uma opcao");
-            System.out.println("0-Sair\n1-Ligar Veiculo\n2-Desligar Veiculo\n3-Ver Tanque\n"
-                    + "4-Acelerar ou Desacelerar Veiculo\n5-Status Geral\n");
+            System.out.println("0-Sair\t1-Ligar Veiculo\t2-Desligar Veiculo\t3-Ver Tanque\t"
+                    + "4-Acelerar ou Desacelerar Veiculo\n5- Abastecer\t6- Trocar Pneu\t7- Status\n");
             valor = Integer.parseInt(leitura.next());
             if (valor == 1) {
                 metodos.ligar();
@@ -26,6 +26,12 @@ public class MenuCarro {
                 metodos.acelerar();
             }
             if (valor == 5){
+                metodos.preco();
+            }
+            if (valor == 6) {
+                metodos.pneu();
+            }
+            if (valor == 7) {
                 metodos.status();
             }
         }

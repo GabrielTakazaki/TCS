@@ -8,11 +8,11 @@ public interface Automovel {
     
     public void desligar();
 
-    public float combustivel();
+    public void combustivel();
 
-    public float preco();
+    public void preco();
 
-    public float pneu();
+    public void pneu();
 
     public void acelerar();
 

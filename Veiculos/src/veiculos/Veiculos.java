@@ -2,6 +2,7 @@ package veiculos;
 
 public abstract class Veiculos {
 
+    private float tanqueCheio;
     private int tipo; //1- Carro 2- Moto 3-Caminhao
     private boolean chave;
     private float tanque;
@@ -34,7 +35,14 @@ public abstract class Veiculos {
      * @param tanque the tanque to set
      */
     public void setTanque(float tanque) {
-        this.tanque = tanque;
+        if (tanque > 0) {
+            this.tanque = tanque;
+        } else {
+            this.tanque = 0;
+            System.out.println("Tanque Vazio, desligando " + getModelo());
+            setVelocidade(0);
+            setChave(false);
+        }
     }
 
     /**
@@ -62,7 +70,16 @@ public abstract class Veiculos {
      * @param pneu the pneu to set
      */
     public void setPneu(float pneu) {
-        this.pneu = pneu;
+        if (pneu > 0 && pneu < 10) {
+            System.out.println("Compre um pneu, pneu careca");
+            this.pneu = pneu;
+        }
+        else if (pneu <= 0) {
+            System.out.println("Estourou pneu, compre um pneu, desligando" + getModelo());
+            setChave(false);
+        } else {
+            this.pneu = pneu;
+        }
     }
 
     /**
@@ -83,11 +100,11 @@ public abstract class Veiculos {
      * @return the tipo
      */
     public String getModelo() {
-        if (tipo == 1) {
+        if (getTipo() == 1) {
             return "Carro";
-        } else if (tipo == 2) {
+        } else if (getTipo() == 2) {
             return "Moto";
-        } else if (tipo == 3) {
+        } else if (getTipo() == 3) {
             return "Caminhao";
         } else {
             return "Modelo Inexistente";
@@ -104,24 +121,41 @@ public abstract class Veiculos {
     public void setTipo(int tipo) {
         this.tipo = tipo;
         if (this.tipo == 1) {
+            setTanqueCheio(30);
             setTanque(30);
             setVelocidade(0);
             setChave(false);
             setVelocidade(0);
             setPneu(50);
         } else if (this.tipo == 2) {
+            setTanqueCheio(20);
             setTanque(20);
             setVelocidade(0);
             setChave(false);
             setVelocidade(0);
             setPneu(50);
         } else if (this.tipo == 3) {
+            setTanqueCheio(40);
             setTanque(40);
             setVelocidade(0);
             setChave(false);
             setVelocidade(0);
             setPneu(50);
         }
+    }
+
+    /**
+     * @return the tanqueCheio
+     */
+    public float getTanqueCheio() {
+        return tanqueCheio;
+    }
+
+    /**
+     * @param tanqueCheio the tanqueCheio to set
+     */
+    public void setTanqueCheio(float tanqueCheio) {
+        this.tanqueCheio = tanqueCheio;
     }
 
 }
