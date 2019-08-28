@@ -17,10 +17,10 @@ public class ProductDAO {
 	public List<Product> listaAll() {
 		return repo.findAll();
 	}
-	public Product getId (Long id) {
+	public Product getId (int id) {
 		return repo.findById(id).get();
 	}
-	public void delete (Long id) {
+	public void delete (int id) {
 		repo.deleteById(id);
 	}
 	public void save (Product product) {

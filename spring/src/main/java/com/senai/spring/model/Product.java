@@ -4,23 +4,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "Product")
 public class Product {
-	@Id @GeneratedValue(strategy = GenerationType.AUTO) @NotEmpty
-	private Long id;
-	@NotEmpty
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@NotNull
 	private String brand;
-	@NotEmpty
+	@NotNull
 	private String madein;
-	@NotEmpty
+	@NotNull
 	private float price;
-	@NotEmpty
+	@NotNull
 	private String nome;
 	
 	protected void Product () {}
-	protected void Product (Long id, String brand, String madein, float price, String nome) {
+	protected void Product (int id, String brand, String madein, float price, String nome) {
 		this.id = id;
 		this.brand = brand;
 		this.madein = madein;
@@ -28,10 +31,10 @@ public class Product {
 		this.nome = nome;
 				
 	}
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getBrand() {
